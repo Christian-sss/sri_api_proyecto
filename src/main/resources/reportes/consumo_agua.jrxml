@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="auditoria_hidrica" pageWidth="595" pageHeight="842" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              whenNoDataType="AllSectionsNoDetail" uuid="812a3da9-3628-4f27-a52a-b403408f4041">
+
+    <parameter name="creadoPor" class="java.lang.String"/>
+    <parameter name="fechaGeneracion" class="java.lang.String"/>
+    <parameter name="TITULO_FILTRO" class="java.lang.String"/>
+    <parameter name="TOTAL_LITROS" class="java.lang.Double"/>
+    <field name="fecha" class="java.lang.String"/>
+    <field name="nombreCultivo" class="java.lang.String"/>
+    <field name="duracionMinutos" class="java.lang.Double"/>
+    <field name="litrosConsumidos" class="java.lang.Double"/>
+
+    <title>
+        <band height="330">
+            <staticText><reportElement x="0" y="0" width="555" height="28" uuid="0ed47ec1-ccbd-4899-a4c1-d996329a3398"/><textElement textAlignment="Center"><font size="18" isBold="true"/></textElement><text><![CDATA[REPORTE DE AUDITORIA HIDRICA]]></text></staticText>
+            <textField><reportElement x="0" y="32" width="555" height="18" uuid="1c137acd-d743-4318-95e1-85577db8351a"/><textElement textAlignment="Center"><font size="11" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{TITULO_FILTRO}]]></textFieldExpression></textField>
+            <textField><reportElement x="0" y="52" width="555" height="16" uuid="9ee4702b-1bfd-4397-8028-45ac122e204d"/><textElement textAlignment="Center"><font size="9" isItalic="true"/></textElement><textFieldExpression><![CDATA["Generado: " + $P{fechaGeneracion} + " - " + $P{creadoPor}]]></textFieldExpression></textField>
+            <rectangle radius="8"><reportElement x="175" y="78" width="205" height="54" backcolor="#E8F5E9" uuid="49378705-766b-429e-b89a-d34ab55719c6"/><graphicElement><pen lineWidth="0.5" lineColor="#81C784"/></graphicElement></rectangle>
+            <staticText><reportElement x="175" y="84" width="205" height="16" uuid="5d045c43-c207-4fa0-8d34-a4ea130af775"/><textElement textAlignment="Center"><font size="9" isBold="true"/></textElement><text><![CDATA[LITROS GASTADOS]]></text></staticText>
+            <textField pattern="#0.00 L"><reportElement x="175" y="101" width="205" height="25" uuid="977e56e5-e826-4227-b41f-9be67bde9594"/><textElement textAlignment="Center"><font size="16" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{TOTAL_LITROS}]]></textFieldExpression></textField>
+            <barChart>
+                <chart evaluationTime="Report"><reportElement x="0" y="145" width="555" height="155" uuid="56a226b3-f653-449b-a962-7c803633db50"/><chartTitle><font size="11" isBold="true"/><titleExpression><![CDATA["Consumo Historico de Agua por Cultivo"]]></titleExpression></chartTitle><chartLegend position="Bottom"/></chart>
+                <categoryDataset><dataset resetType="Report"/><categorySeries><seriesExpression><![CDATA[$F{nombreCultivo}]]></seriesExpression><categoryExpression><![CDATA[$F{fecha}]]></categoryExpression><valueExpression><![CDATA[$F{litrosConsumidos}]]></valueExpression></categorySeries></categoryDataset>
+                <barPlot isShowLabels="true"><plot/><itemLabel/><categoryAxisFormat><axisFormat/></categoryAxisFormat><valueAxisFormat><axisFormat/></valueAxisFormat></barPlot>
+            </barChart>
+            <staticText><reportElement x="0" y="310" width="555" height="18" uuid="353e6995-1200-4b8d-bac6-d642e3b4a150"/><textElement><font size="12" isBold="true"/></textElement><text><![CDATA[Consumo Diario Consolidado]]></text></staticText>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="25">
+            <rectangle><reportElement x="0" y="0" width="555" height="23" backcolor="#E3F2FD" uuid="45d3ac76-a7a5-4ffc-82ea-e647ec377834"/></rectangle>
+            <staticText><reportElement x="0" y="0" width="95" height="23" uuid="53f8e411-766e-46b2-b7bb-ed72ae85aadf"/><textElement verticalAlignment="Middle"><font size="9" isBold="true"/></textElement><text><![CDATA[Fecha]]></text></staticText>
+            <staticText><reportElement x="95" y="0" width="210" height="23" uuid="ce49c15b-a659-4db2-aaec-e7a796f1277f"/><textElement verticalAlignment="Middle"><font size="9" isBold="true"/></textElement><text><![CDATA[Cultivo]]></text></staticText>
+            <staticText><reportElement x="305" y="0" width="125" height="23" uuid="c99c88b7-565a-450e-877d-60a719ed6e6d"/><textElement textAlignment="Right" verticalAlignment="Middle"><font size="8" isBold="true"/></textElement><text><![CDATA[Tiempo Bombeo (Min)]]></text></staticText>
+            <staticText><reportElement x="430" y="0" width="125" height="23" uuid="aee16f25-d99a-41d6-8290-076329a30a0e"/><textElement textAlignment="Right" verticalAlignment="Middle"><font size="8" isBold="true"/></textElement><text><![CDATA[Volumen Invertido (L)]]></text></staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="23">
+            <textField><reportElement x="0" y="1" width="95" height="19" uuid="dba9a124-12d0-4969-bbe9-b7ba399de925"/><textElement verticalAlignment="Middle"><font size="8"/></textElement><textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression></textField>
+            <textField textAdjust="StretchHeight"><reportElement x="95" y="1" width="210" height="19" uuid="27d23e8a-583b-40cb-aaee-39bfcb898415"/><textElement verticalAlignment="Middle"><font size="8"/></textElement><textFieldExpression><![CDATA[$F{nombreCultivo}]]></textFieldExpression></textField>
+            <textField pattern="#0.00"><reportElement x="305" y="1" width="125" height="19" uuid="0b38ad2d-a02e-4213-9f20-52feb5f37374"/><textElement textAlignment="Right" verticalAlignment="Middle"><font size="8"/></textElement><textFieldExpression><![CDATA[$F{duracionMinutos}]]></textFieldExpression></textField>
+            <textField pattern="#0.00"><reportElement x="430" y="1" width="125" height="19" uuid="dccf999c-fb99-48ce-aebe-bf84973b54d9"/><textElement textAlignment="Right" verticalAlignment="Middle"><font size="8" isBold="true"/></textElement><textFieldExpression><![CDATA[$F{litrosConsumidos}]]></textFieldExpression></textField>
+            <line><reportElement x="0" y="22" width="555" height="1" forecolor="#E5E7EB" uuid="3ce3297b-eed9-4e2a-999f-e08ee2bd4f24"/></line>
+        </band>
+    </detail>
+    <pageFooter><band height="24"><line><reportElement x="0" y="0" width="555" height="1" uuid="34a2f58f-ec91-47e2-ab6d-0cb39645cbcd"/></line><textField><reportElement x="430" y="4" width="125" height="16" uuid="d1fa6961-b2d5-42d8-9e4f-0254cd5d7163"/><textElement textAlignment="Right"><font size="8"/></textElement><textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression></textField></band></pageFooter>
+    <noData><band height="60"><staticText><reportElement x="0" y="15" width="555" height="25" uuid="57fabf8b-cda0-4bad-bf39-47f2442955f4"/><textElement textAlignment="Center"><font size="11" isItalic="true"/></textElement><text><![CDATA[No existen consumos para los filtros seleccionados.]]></text></staticText></band></noData>
+</jasperReport>

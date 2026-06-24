@@ -9,16 +9,12 @@ import org.springframework.stereotype.Repository;
 import sri.project.sri_project.model.User;
 
 import java.util.Optional;
-/**
- *
- * @author Usuario
- */
 
-
-
-
+@Repository
 public interface UsuarioRepository extends JpaRepository<User,Integer> {
 
-    Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
+
+    Optional<User> findByEmailOrNombre(String email, String nombre);
 
 }

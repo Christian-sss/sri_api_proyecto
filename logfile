@@ -1,0 +1,98 @@
+2026-06-13 21:01:04.321 -05 [94597] LOG:  starting PostgreSQL 15.18 (Homebrew) on aarch64-apple-darwin25.4.0, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102), 64-bit
+2026-06-13 21:01:04.322 -05 [94597] LOG:  listening on IPv6 address "::1", port 5432
+2026-06-13 21:01:04.322 -05 [94597] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-06-13 21:01:04.322 -05 [94597] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-06-13 21:01:04.325 -05 [94600] LOG:  database system was shut down at 2026-06-13 20:59:18 -05
+2026-06-13 21:01:04.328 -05 [94597] LOG:  database system is ready to accept connections
+2026-06-13 21:01:15.459 -05 [94627] FATAL:  lock file "postmaster.pid" already exists
+2026-06-13 21:01:15.459 -05 [94627] HINT:  Is another postmaster (PID 94597) running in data directory "/opt/homebrew/var/postgres"?
+2026-06-13 21:03:38.013 -05 [96283] FATAL:  database "user_db" does not exist
+2026-06-13 21:04:08.823 -05 [96441] FATAL:  database "christianr.apazaturpo" does not exist
+2026-06-13 21:04:10.694 -05 [96476] FATAL:  database "christianr.apazaturpo" does not exist
+2026-06-13 21:04:57.886 -05 [96588] FATAL:  database "practice_db" does not exist
+2026-06-13 21:05:16.009 -05 [96602] FATAL:  database "user_db" does not exist
+2026-06-13 21:05:22.782 -05 [96610] FATAL:  database "practice_db" does not exist
+2026-06-13 21:05:52.610 -05 [96619] FATAL:  database "practice_db" does not exist
+2026-06-13 21:06:04.324 -05 [94598] LOG:  checkpoint starting: time
+2026-06-13 21:06:08.827 -05 [94598] LOG:  checkpoint complete: wrote 47 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.495 s, sync=0.002 s, total=4.503 s; sync files=11, longest=0.001 s, average=0.001 s; distance=275 kB, estimate=275 kB
+2026-06-13 21:06:24.709 -05 [96898] FATAL:  database "practice_db" does not exist
+2026-06-13 21:06:40.928 -05 [96904] FATAL:  database "practice_db" does not exist
+2026-06-13 21:06:59.176 -05 [96909] FATAL:  database "practice_db" does not exist
+2026-06-13 21:07:03.899 -05 [96910] FATAL:  database "practice_db" does not exist
+2026-06-13 21:07:04.015 -05 [96912] FATAL:  database "practice_db" does not exist
+2026-06-13 21:07:38.320 -05 [96930] ERROR:  relation "books" does not exist at character 15
+2026-06-13 21:07:38.320 -05 [96930] STATEMENT:  SELECT *
+	FROM Books
+2026-06-13 21:11:04.825 -05 [94598] LOG:  checkpoint starting: time
+2026-06-13 21:12:35.560 -05 [98527] FATAL:  role "postgres" does not exist
+2026-06-13 21:12:43.951 -05 [94598] LOG:  checkpoint complete: wrote 976 buffers (6.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=99.121 s, sync=0.004 s, total=99.127 s; sync files=314, longest=0.001 s, average=0.001 s; distance=4420 kB, estimate=4420 kB
+2026-06-13 21:16:04.951 -05 [94598] LOG:  checkpoint starting: time
+2026-06-13 21:16:05.364 -05 [94598] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.406 s, sync=0.001 s, total=0.413 s; sync files=5, longest=0.001 s, average=0.001 s; distance=1 kB, estimate=3978 kB
+2026-06-13 21:18:54.680 -05 [96930] ERROR:  syntax error at or near "," at character 241
+2026-06-13 21:18:54.680 -05 [96930] STATEMENT:  SELECT m.name AS name,EXTRACT(MONTH FROM b.borrowed_date) AS month
+	FROM Members m
+	INNER JOIN Borrowings b on m.member_id = b.member_id
+	WHERE EXTRACT(MONTH FROM b.borrowed_date) = 'January' AND
+	      EXTRACT(YEAR FROM b.borrowed_date) = 2023,
+2026-06-13 21:18:59.212 -05 [96930] ERROR:  invalid input syntax for type numeric: "January" at character 180
+2026-06-13 21:18:59.212 -05 [96930] STATEMENT:  SELECT m.name AS name,EXTRACT(MONTH FROM b.borrowed_date) AS month
+	FROM Members m
+	INNER JOIN Borrowings b on m.member_id = b.member_id
+	WHERE EXTRACT(MONTH FROM b.borrowed_date) = 'January' AND
+	      EXTRACT(YEAR FROM b.borrowed_date) = 2023
+2026-06-13 21:23:07.837 -05 [96930] ERROR:  column b.name does not exist at character 8
+2026-06-13 21:23:07.837 -05 [96930] HINT:  Perhaps you meant to reference the column "a.name".
+2026-06-13 21:23:07.837 -05 [96930] STATEMENT:  SELECT b.name AS books_name
+	FROM Authors a
+	INNER JOIN Books b on a.author_id = b.author_id
+	WHERE a.name = 'George Orwell'
+2026-06-13 21:28:49.798 -05 [96930] ERROR:  function pg_catalog.extract(unknown, integer) does not exist at character 16
+2026-06-13 21:28:49.798 -05 [96930] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2026-06-13 21:28:49.798 -05 [96930] STATEMENT:  SELECT a.name, EXTRACT(YEAR FROM a.birth_year) AS Adate
+	FROM Authors a
+	WHERE a.birth_year < 1950
+2026-06-13 21:29:21.797 -05 [96930] ERROR:  syntax error at or near "FR0M" at character 10
+2026-06-13 21:29:21.797 -05 [96930] STATEMENT:  SELECT *
+	FR0M Authors
+2026-06-13 21:29:22.499 -05 [96930] ERROR:  syntax error at or near "FR0M" at character 10
+2026-06-13 21:29:22.499 -05 [96930] STATEMENT:  SELECT *
+	FR0M Authors
+2026-06-13 21:29:45.015 -05 [96930] ERROR:  function pg_catalog.extract(unknown, integer) does not exist at character 16
+2026-06-13 21:29:45.015 -05 [96930] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2026-06-13 21:29:45.015 -05 [96930] STATEMENT:  SELECT a.name, EXTRACT(YEAR FROM a.birth_year) AS Adate
+	FROM Authors a
+	WHERE a.birth_year < 1950
+2026-06-13 22:01:22.304 -05 [94598] LOG:  checkpoint starting: time
+2026-06-13 22:01:22.822 -05 [94598] LOG:  checkpoint complete: wrote 6 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.510 s, sync=0.001 s, total=0.519 s; sync files=6, longest=0.001 s, average=0.001 s; distance=1 kB, estimate=3581 kB
+2026-06-13 22:05:40.354 -05 [96930] ERROR:  column "b.title" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2026-06-13 22:05:40.354 -05 [96930] STATEMENT:  SELECT b.title AS title ,b.category AS category
+	FROM Books b
+	GROUP BY b.category
+2026-06-13 22:40:24.926 -05 [96930] ERROR:  table name "b" specified more than once
+2026-06-13 22:40:24.926 -05 [96930] STATEMENT:  SELECT m.name
+	FROM Members m
+	INNER JOIN Borrowings B on m.member_id = B.member_id
+	INNER JOIN Books b ON b.book_id = B.book_id
+	WHERE b.title = '1984'
+2026-06-14 12:30:26.934 -05 [94598] LOG:  checkpoint starting: time
+2026-06-14 12:33:38.059 -05 [94598] LOG:  checkpoint complete: wrote 1884 buffers (11.5%); 0 WAL file(s) added, 0 removed, 1 recycled; write=191.110 s, sync=0.013 s, total=191.125 s; sync files=600, longest=0.001 s, average=0.001 s; distance=8677 kB, estimate=8677 kB
+2026-06-14 12:35:26.064 -05 [94598] LOG:  checkpoint starting: time
+2026-06-14 12:35:31.388 -05 [94598] LOG:  checkpoint complete: wrote 53 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.317 s, sync=0.003 s, total=5.325 s; sync files=41, longest=0.001 s, average=0.001 s; distance=149 kB, estimate=7824 kB
+2026-06-14 12:36:36.314 -05 [69569] ERROR:  column u1_0.username does not exist at character 59
+2026-06-14 12:36:36.314 -05 [69569] STATEMENT:  select u1_0.id,u1_0.date_at,u1_0.email,u1_0.password_hash,u1_0.username from users u1_0
+2026-06-14 12:40:26.371 -05 [94598] LOG:  checkpoint starting: time
+2026-06-14 12:40:30.385 -05 [94598] LOG:  checkpoint complete: wrote 40 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.003 s, sync=0.004 s, total=4.014 s; sync files=32, longest=0.002 s, average=0.001 s; distance=157 kB, estimate=7057 kB
+2026-06-14 12:45:26.377 -05 [94598] LOG:  checkpoint starting: time
+2026-06-14 12:45:26.786 -05 [94598] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.406 s, sync=0.001 s, total=0.410 s; sync files=5, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=6351 kB
+2026-06-15 23:07:10.041 -05 [94598] LOG:  checkpoint starting: time
+2026-06-15 23:07:10.557 -05 [94598] LOG:  checkpoint complete: wrote 6 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.510 s, sync=0.001 s, total=0.517 s; sync files=6, longest=0.001 s, average=0.001 s; distance=1 kB, estimate=5716 kB
+2026-06-15 23:12:10.563 -05 [94598] LOG:  checkpoint starting: time
+2026-06-15 23:12:10.981 -05 [94598] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.411 s, sync=0.001 s, total=0.419 s; sync files=5, longest=0.001 s, average=0.001 s; distance=1 kB, estimate=5145 kB
+2026-06-15 23:32:11.004 -05 [94598] LOG:  checkpoint starting: time
+2026-06-15 23:32:11.416 -05 [94598] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.409 s, sync=0.001 s, total=0.413 s; sync files=5, longest=0.001 s, average=0.001 s; distance=1 kB, estimate=4630 kB
+2026-06-18 10:55:58.376 -05 [94597] LOG:  received smart shutdown request
+2026-06-18 10:55:58.385 -05 [94597] LOG:  background worker "logical replication launcher" (PID 94603) exited with exit code 1
+2026-06-18 10:55:58.385 -05 [94598] LOG:  shutting down
+2026-06-18 10:55:58.386 -05 [94598] LOG:  checkpoint starting: shutdown immediate
+2026-06-18 10:55:58.390 -05 [94598] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.001 s, total=0.006 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=4167 kB
+2026-06-18 10:55:58.398 -05 [94597] LOG:  database system is shut down

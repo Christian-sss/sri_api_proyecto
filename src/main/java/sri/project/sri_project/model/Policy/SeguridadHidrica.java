@@ -12,17 +12,12 @@ package sri.project.sri_project.model.Policy;
 
 
 import sri.project.sri_project.model.TanqueAgua;
-import sri.project.sri_project.model.EstadoSistema;
+import sri.project.sri_project.model.enums.EstadoSistema;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class SeguridadHidrica  {
-
-
-    public boolean puedeRegar(TanqueAgua tanque) {
-        return tanque.hayAgua() && tanque.getHumedad() < TanqueAgua.HUMEDAD_MINIMA;
-    }
 
     public void evaluarEstado(TanqueAgua tanque) {
 

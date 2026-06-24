@@ -4,7 +4,6 @@
  */
 package sri.project.sri_project.service;
 
-import org.springframework.context.annotation.Bean;
 import sri.project.sri_project.model.User;
 
 /**
@@ -15,5 +14,7 @@ import sri.project.sri_project.model.User;
 
 public interface UsuarioService {
     
-       User ejecutar(String username, String passwordIngresada);
+    User ejecutar(String username, String passwordIngresada);
+    User autenticarConGoogle(String idTokenString);
+    User registrar(String email, String password);
 }
